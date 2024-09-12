@@ -353,7 +353,7 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<argLine>--enable-preview</argLine>
+					<argLine>@{surefireArgLine} --enable-preview</argLine> 
 					<reportFormat>plain</reportFormat>
 					<consoleOutputReporter>
 						<disable>true</disable>
@@ -439,6 +439,10 @@
 								<goals>
 									<goal>prepare-agent</goal>
 								</goals>
+								<configuration>
+									<append>true</append>
+									<propertyName>surefireArgLine</propertyName>
+								</configuration>
 							</execution>
 							<execution>
 								<id>report</id>
