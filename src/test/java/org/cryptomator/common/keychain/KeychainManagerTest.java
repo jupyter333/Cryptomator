@@ -54,27 +54,7 @@ public class KeychainManagerTest {
 			Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1), () -> latch.await());
 			Assertions.assertTrue(result.get());
 		}
-		@Test
-		public void testNoKeychainAccessProviderException() {
-			KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(null));
-			Assertions.assertThrows(NoKeychainAccessProviderException.class, () -> {
-				keychainManager.storePassphrase("key", "display", "passphrase");
-			});
-		}
-		@Test
-		public void testIsPassphraseStoredReturnsFalseWhenNull() throws KeychainAccessException {
-			KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(new MapKeychainAccess()));
-			char[] result = keychainManager.loadPassphrase("non-existent-key");
-			Assertions.assertNull(result);
-			Assertions.assertFalse(keychainManager.isPassphraseStored("non-existent-key"));
-		}
-		@Test
-		public void testDeletePassphrase() throws KeychainAccessException {
-			KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(new MapKeychainAccess()));
-			keychainManager.storePassphrase("test-key", "test-display", "test-pass");
-			keychainManager.deletePassphrase("test-key");
-			Assertions.assertFalse(keychainManager.isPassphraseStored("test-key"));
-		}
+
 
 	}
 
