@@ -57,6 +57,19 @@ public class KeychainManagerTest {
 
 	}
 
+	/**
+	 * Voici des tests suplementaire fait par notre equipe
+	 */
+	@Test
+	public void testDeletePassphrase() throws KeychainAccessException {
+		KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(new MapKeychainAccess()));
+		keychainManager.storePassphrase("test-key", "test-display", "test-pass");
+		keychainManager.deletePassphrase("test-key");
+		Assertions.assertFalse(keychainManager.isPassphraseStored("test-key"));
+	}
+
+
+
 
 
 }
