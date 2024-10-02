@@ -86,7 +86,7 @@ public class PasswordStrengthUtilTest {
 		Assertions.assertEquals("", test);
 	}
 
-
+	// Nouveau test: jhosim
 	@Test
 	public void fullfillsMinimumrequirementsTest(){
 
