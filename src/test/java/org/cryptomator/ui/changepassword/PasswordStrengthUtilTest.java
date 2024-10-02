@@ -84,6 +84,26 @@ public class PasswordStrengthUtilTest {
 		String test = util.getStrengthDescription(4);
 
 		Assertions.assertEquals("", test);
+	}
+
+
+	@Test
+	public void fullfillsMinimumrequirementsTest(){
+		String RESSOURCE_PREFIX = "passwordStrength.messageLabel.";
+		ResourceBundle fakeBundle = Mockito.mock(ResourceBundle.class);
+		Environment fakeEnvironment = Mockito.mock(Environment.class);
+		Mockito.when(fakeEnvironment.getMinPwLength()).thenReturn(10);
+
+		PasswordStrengthUtil util = new PasswordStrengthUtil(fakeBundle, fakeEnvironment);
+
+
+		boolean testTrue = util.fulfillsMinimumRequirements("12345678910");
+		boolean testFalse = util.fulfillsMinimumRequirements("12345");
+
+
+		Assertions.assertTrue(testTrue);
+		Assertions.assertFalse(testFalse);
+
 
 	}
 
