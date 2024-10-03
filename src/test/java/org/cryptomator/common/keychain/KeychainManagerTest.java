@@ -1,17 +1,26 @@
 package org.cryptomator.common.keychain;
 
 
+import org.cryptomator.common.settings.Settings;
 import org.cryptomator.integrations.keychain.KeychainAccessException;
+import org.cryptomator.integrations.keychain.KeychainAccessProvider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import javafx.application.Platform;
+import javafx.beans.binding.ObjectExpression;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -60,6 +69,7 @@ public class KeychainManagerTest {
 	/**
 	 * Voici des tests suplementaire fait par notre equipe
 	 */
+
 	@Test
 	public void testDeletePassphrase() throws KeychainAccessException {
 		KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(new MapKeychainAccess()));
@@ -67,6 +77,8 @@ public class KeychainManagerTest {
 		keychainManager.deletePassphrase("test-key");
 		Assertions.assertFalse(keychainManager.isPassphraseStored("test-key"));
 	}
+
+
 
 
 
