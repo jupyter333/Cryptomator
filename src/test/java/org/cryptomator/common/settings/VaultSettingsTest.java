@@ -33,7 +33,7 @@ public class VaultSettingsTest {
 	private VaultSettings vaultSettings;
 
 	@BeforeEach
-	void setUp() {
+	public void setUp() {
 		// dummy settings du vault
 		VaultSettingsJson json = new VaultSettingsJson();
 		json.id = "testId";
