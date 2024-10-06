@@ -80,7 +80,7 @@ public class ReadMeGeneratorTest {
 
 	@BeforeEach
 	public void setUp() {
-		// Mock the ResourceBundle
+
 		mockResourceBundle = mock(ResourceBundle.class);
 
 		// Setup mocked responses for the resource keys
@@ -100,7 +100,7 @@ public class ReadMeGeneratorTest {
 	}
 	@Test
 	public void testCreateVaultStorageLocationReadmeRtf() {
-		// Call the method to test
+
 		String result = readmeGenerator.createVaultStorageLocationReadmeRtf();
 
 		// Verify that the result starts and ends with correct RTF headers/footers
@@ -119,7 +119,7 @@ public class ReadMeGeneratorTest {
 		assertTrue(result.contains("    Ensure regular backups."));
 		assertTrue(result.contains("{\\field{\\*\\fldinst HYPERLINK \"http://docs.cryptomator.org/\""));
 
-		// Optionally, you can also verify the exact number of invocations to ensure all strings were fetched
+
 		verify(mockResourceBundle, times(10)).getString(anyString());
 	}
 

@@ -66,9 +66,6 @@ public class KeychainManagerTest {
 
 	}
 
-	/**
-	 * Voici des tests suplementaire fait par notre equipe
-	 */
 
 	@Test
 	public void testDeletePassphrase() throws KeychainAccessException {
