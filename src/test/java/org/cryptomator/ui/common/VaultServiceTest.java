@@ -42,7 +42,7 @@ public class VaultServiceTest {
 	}
 
 	@Test
-	public void testCreateRevealTaskSuccess() {
+	public void testCreateReveal() {
 
 		Task<Vault> task = vaultService.createRevealTask(vault);
 		assertNotNull(task);
@@ -58,7 +58,7 @@ public class VaultServiceTest {
 		verify(executorService, times(1)).execute(any(Task.class));
 
 		service.lock(vault, true);
-		verify(executorService, times(2)).execute(any(Task.class)); // Ensure lock task was executed
+		verify(executorService, times(2)).execute(any(Task.class));
 
 	}
 
