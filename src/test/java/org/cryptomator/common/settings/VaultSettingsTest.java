@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.github.javafaker.Faker;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,24 +33,29 @@ public class VaultSettingsTest {
 	}
 	private VaultSettings vaultSettings;
 
+	private Faker faker;
+
 	@BeforeEach
 	public void setUp() {
-		// dummy settings du vault
+
+		faker = new Faker();
+
+		// Use Faker to generate random values
 		VaultSettingsJson json = new VaultSettingsJson();
-		json.id = "testId";
-		json.path = "/test/path";
-		json.displayName = "Test Vault";
-		json.unlockAfterStartup = true;
-		json.revealAfterMount = true;
-		json.usesReadOnlyMode = false;
-		json.mountFlags = "rw";
-		json.maxCleartextFilenameLength = 255;
-		json.actionAfterUnlock = WhenUnlocked.ASK;
-		json.autoLockWhenIdle = true;
-		json.autoLockIdleSeconds = 600;
-		json.mountPoint = "/mount/point";
-		json.mountService = "testService";
-		json.port = 42427;
+		json.id = faker.idNumber().valid();
+		json.path = faker.file().fileName();
+		json.displayName = faker.company().name();
+		json.unlockAfterStartup = faker.bool().bool();
+		json.revealAfterMount = faker.bool().bool();
+		json.usesReadOnlyMode = faker.bool().bool();
+		json.mountFlags = faker.lorem().word();
+		json.maxCleartextFilenameLength = faker.number().numberBetween(100, 255);
+		json.actionAfterUnlock = WhenUnlocked.ASK; // Remain static
+		json.autoLockWhenIdle = faker.bool().bool();
+		json.autoLockIdleSeconds = faker.number().numberBetween(300, 600);
+		json.mountPoint = faker.file().fileName();
+		json.mountService = faker.app().name();
+		json.port = faker.number().numberBetween(10000, 60000);
 
 		vaultSettings = new VaultSettings(json);
 	}
@@ -59,19 +65,20 @@ public class VaultSettingsTest {
 
 		VaultSettingsJson serializedJson = vaultSettings.serialized();
 
-		assertEquals("testId", serializedJson.id);
-		assertEquals("/test/path", serializedJson.path);
-		assertEquals("Test Vault", serializedJson.displayName);
-		assertTrue(serializedJson.unlockAfterStartup);
-		assertTrue(serializedJson.revealAfterMount);
-		assertFalse(serializedJson.usesReadOnlyMode);
-		assertEquals("rw", serializedJson.mountFlags);
-		assertEquals(255, serializedJson.maxCleartextFilenameLength);
-		assertEquals(WhenUnlocked.ASK, serializedJson.actionAfterUnlock);
-		assertTrue(serializedJson.autoLockWhenIdle);
-		assertEquals(600, serializedJson.autoLockIdleSeconds);
-		assertEquals("/mount/point", serializedJson.mountPoint);
-		assertEquals("testService", serializedJson.mountService);
-		assertEquals(42427, serializedJson.port);
+		// Validate the serialized values against the original VaultSettingsJson
+		assertEquals(vaultSettings.serialized().id, serializedJson.id);
+		assertEquals(vaultSettings.serialized().path, serializedJson.path);
+		assertEquals(vaultSettings.serialized().displayName, serializedJson.displayName);
+		assertEquals(vaultSettings.serialized().unlockAfterStartup, serializedJson.unlockAfterStartup);
+		assertEquals(vaultSettings.serialized().revealAfterMount, serializedJson.revealAfterMount);
+		assertEquals(vaultSettings.serialized().usesReadOnlyMode, serializedJson.usesReadOnlyMode);
+		assertEquals(vaultSettings.serialized().mountFlags, serializedJson.mountFlags);
+		assertEquals(vaultSettings.serialized().maxCleartextFilenameLength, serializedJson.maxCleartextFilenameLength);
+		assertEquals(vaultSettings.serialized().actionAfterUnlock, serializedJson.actionAfterUnlock);
+		assertEquals(vaultSettings.serialized().autoLockWhenIdle, serializedJson.autoLockWhenIdle);
+		assertEquals(vaultSettings.serialized().autoLockIdleSeconds, serializedJson.autoLockIdleSeconds);
+		assertEquals(vaultSettings.serialized().mountPoint, serializedJson.mountPoint);
+		assertEquals(vaultSettings.serialized().mountService, serializedJson.mountService);
+		assertEquals(vaultSettings.serialized().port, serializedJson.port);
 	}
 }
