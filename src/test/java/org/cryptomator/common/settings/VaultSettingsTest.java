@@ -50,7 +50,7 @@ public class VaultSettingsTest {
 		json.usesReadOnlyMode = faker.bool().bool();
 		json.mountFlags = faker.lorem().word();
 		json.maxCleartextFilenameLength = faker.number().numberBetween(100, 255);
-		json.actionAfterUnlock = WhenUnlocked.ASK; // Remain static
+		json.actionAfterUnlock = WhenUnlocked.ASK;
 		json.autoLockWhenIdle = faker.bool().bool();
 		json.autoLockIdleSeconds = faker.number().numberBetween(300, 600);
 		json.mountPoint = faker.file().fileName();
