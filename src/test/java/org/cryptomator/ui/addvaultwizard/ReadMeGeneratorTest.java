@@ -55,6 +55,8 @@ public class ReadMeGeneratorTest {
 	}
 
     // Nouveau test jhosim
+	// Teste si la méthode createVaultAccessLocationReadmeRtf génère correctement un document RTF
+	// avec les localisations d'accès au vault en utilisant les valeurs du bundle de ressources.
 	@Test
 	public void createVaultAccessLocationReadmeRtfTest(){
 		String HEADING = "\\fs40\\qc %s";
