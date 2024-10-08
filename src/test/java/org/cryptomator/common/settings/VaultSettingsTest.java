@@ -31,16 +31,24 @@ public class VaultSettingsTest {
 	public void testNormalize(String test, String expected) {
 		assertEquals(expected, VaultSettings.normalizeDisplayName(test));
 	}
-	private VaultSettings vaultSettings;
 
+	/*
+	 * Creation des configuration initiales de javafaker
+	 * pour faire de tests sur la methode serialized
+	 */
+
+	private VaultSettings vaultSettings;
 	private Faker faker;
 
+	/**
+	 * Cette methode genere des entrees a evaluer pour la fonction serialized avec java faker
+	 */
 	@BeforeEach
 	public void setUp() {
 
 		faker = new Faker();
 
-		// Use Faker to generate random values
+		// Faker genere des valeurs a tester pour la fonction serialized
 		VaultSettingsJson json = new VaultSettingsJson();
 		json.id = faker.idNumber().valid();
 		json.path = faker.file().fileName();
@@ -60,12 +68,18 @@ public class VaultSettingsTest {
 		vaultSettings = new VaultSettings(json);
 	}
 
+	/***
+	 * Cette methode verifie que serialized donne correctement les parametres
+	 * attendus par le VaulSettings.java.
+	 * Le test devrait passer si les valeurs correspondent a ceux qu'on a fait dans le
+	 * setUp().
+	 */
 	@Test
 	public void testSerialized() {
 
 		VaultSettingsJson serializedJson = vaultSettings.serialized();
 
-		// Validate the serialized values against the original VaultSettingsJson
+		// On fait des assertions sur les valeurs attendus
 		assertEquals(vaultSettings.serialized().id, serializedJson.id);
 		assertEquals(vaultSettings.serialized().path, serializedJson.path);
 		assertEquals(vaultSettings.serialized().displayName, serializedJson.displayName);

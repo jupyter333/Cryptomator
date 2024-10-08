@@ -80,45 +80,55 @@ public class ReadMeGeneratorTest {
 	private ResourceBundle mockResourceBundle;
 	private ReadmeGenerator readmeGenerator;
 
+	/**
+	 * methode qui met en place des valeurs attendus par le mock
+	 */
+
 	@BeforeEach
 	public void setUp() {
 
 		mockResourceBundle = mock(ResourceBundle.class);
 
-		// Setup mocked responses for the resource keys
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.1")).thenReturn("Vault Storage Location");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.2")).thenReturn("This is where your vault will be stored.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.3")).thenReturn("Don't forget");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.4")).thenReturn("Make sure it's secure.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.5")).thenReturn("Store in a safe place.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.6")).thenReturn("Additional Information:");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.7")).thenReturn("You can find more details here.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.8")).thenReturn("Documentation is available.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.9")).thenReturn("Ensure regular backups.");
-		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.10")).thenReturn("For more information, visit %s");
+		// creation des chaines de caracteres qui devraient etre presentes dans le readMe
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.1")).thenReturn("Voici un Vault");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.2")).thenReturn("Ceci est un test fait par");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.3")).thenReturn("Jhosim et Cesar");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.4")).thenReturn("Pour tester la generation des README");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.5")).thenReturn("Dans le projet");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.6")).thenReturn("Cryptomator");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.7")).thenReturn("Plus de details ici.");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.8")).thenReturn("Dans le site web");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.9")).thenReturn("officiel");
+		when(mockResourceBundle.getString("addvault.new.readme.storageLocation.10")).thenReturn(":) %s");
 
 		// Create the ReadmeGenerator instance with the mocked ResourceBundle
 		readmeGenerator = new ReadmeGenerator(mockResourceBundle);
 	}
+
+	/**
+	 * Methode qui test les valeurs mis en place dans le setUp,
+	 * la methode evalue le bon fonctionnement du generateur du CreateVaultStorageLocationReadmeRtf.
+	 * Les tests devront passer si le document a le bon format avec le contenu fait dans le setUp
+	 */
 	@Test
 	public void testCreateVaultStorageLocationReadmeRtf() {
 
 		String result = readmeGenerator.createVaultStorageLocationReadmeRtf();
 
-		// Verify that the result starts and ends with correct RTF headers/footers
+		// On verifie la bonne indentation qui est mis dans le fichier ReadMeGenerator.java
 		assertTrue(result.startsWith("{\\rtf1\\fbidis\\ansi\\uc0\\fs32\n"));
 		assertTrue(result.endsWith("}"));
 
-		// Verify that the content includes the expected formatted values
-		assertTrue(result.contains("\\fs40\\qc Vault Storage Location"));
-		assertTrue(result.contains("This is where your vault will be stored."));
-		assertTrue(result.contains("\\b Don't forget"));
-		assertTrue(result.contains("    Make sure it's secure."));
-		assertTrue(result.contains("    Store in a safe place."));
-		assertTrue(result.contains("Additional Information:"));
-		assertTrue(result.contains("    You can find more details here."));
-		assertTrue(result.contains("    Documentation is available."));
-		assertTrue(result.contains("    Ensure regular backups."));
+		// Verify que chaque ligne contient le bon format et les valeurs fait dans le setUp
+		assertTrue(result.contains("\\fs40\\qc Voici un Vault"));
+		assertTrue(result.contains("Ceci est un test fait par"));
+		assertTrue(result.contains("\\b Jhosim et Cesar"));
+		assertTrue(result.contains("    Pour tester la generation des README"));
+		assertTrue(result.contains("    Dans le projet"));
+		assertTrue(result.contains("Cryptomator"));
+		assertTrue(result.contains("    Plus de details ici."));
+		assertTrue(result.contains("    Dans le site web"));
+		assertTrue(result.contains("    officiel"));
 		assertTrue(result.contains("{\\field{\\*\\fldinst HYPERLINK \"http://docs.cryptomator.org/\""));
 
 

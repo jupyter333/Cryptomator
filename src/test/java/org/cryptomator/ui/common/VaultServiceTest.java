@@ -35,12 +35,21 @@ public class VaultServiceTest {
 	@InjectMocks
 	private VaultService vaultService;
 
+
+	/*
+		On met en place un mock pour les prochains tests
+	 */
 	@BeforeEach
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
 		when(application.get()).thenReturn(mockApplication);
 	}
 
+	/**
+	 * test qui verifie le service pour reveler le vault
+	 * dans le VaultService.java.
+	 * Le test devrait passer si la tache est cree sans erreur (elle est non vide)
+	 */
 	@Test
 	public void testCreateReveal() {
 
@@ -49,7 +58,10 @@ public class VaultServiceTest {
 
 		task.run();
 	}
-
+	/**
+	 * Tache qui test les methode de verrouillage et deverrouillage du vault
+	 * le tests devront passer si le verify ne donne pas un erreur.
+	 */
 	@Test
 	public void testLockAndReveal() {
 		VaultService service  = new VaultService(application, executorService);

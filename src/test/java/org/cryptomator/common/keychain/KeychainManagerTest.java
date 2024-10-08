@@ -66,13 +66,18 @@ public class KeychainManagerTest {
 
 	}
 
+	/**
+	 * test qui efface une entree  du keychain
+	 * le tests doit passer si l'entree n'est plus presente
+	 * @throws KeychainAccessException
+	 */
 
 	@Test
 	public void testDeletePassphrase() throws KeychainAccessException {
 		KeychainManager keychainManager = new KeychainManager(new SimpleObjectProperty<>(new MapKeychainAccess()));
-		keychainManager.storePassphrase("test-key", "test-display", "test-pass");
-		keychainManager.deletePassphrase("test-key");
-		Assertions.assertFalse(keychainManager.isPassphraseStored("test-key"));
+		keychainManager.storePassphrase("clef-test", "test-delete", "Whisky44");
+		keychainManager.deletePassphrase("clef-test");
+		Assertions.assertFalse(keychainManager.isPassphraseStored("clef-test"));
 	}
 
 
