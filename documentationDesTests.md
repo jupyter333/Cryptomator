@@ -10,7 +10,7 @@ Nous avons choisi ce package car le `keychainManager` est une classe très impor
 
 Nous avons effectué un test unitaire simple pour vérifier que cette fonction supprime correctement une clé. Nous commençons par stocker une clé dans le `keychainManager`, puis nous la supprimons et effectuons une assertion pour confirmer qu'elle n'est plus présente.
 
-[testDeletePassphrase()](org.cryptomator.common.keychain.KeychainManagerTest#testDeletePassphrase)
+[testDeletePassphrase()](https://github.com/jupyter333/Cryptomator/blob/6b933fce646fd14ab7660912e7a3206f3419cc0d/src/test/java/org/cryptomator/common/keychain/KeychainManagerTest.java#L76)
 
 ## org.cryptomator.common.settings
 
