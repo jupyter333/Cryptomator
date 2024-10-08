@@ -25,8 +25,7 @@ Dans ce package, nous avons réalisé deux tests pour couvrir trois méthodes du
 ## org.cryptomator.ui.changepassword
 
 Les méthodes qu'on a choisi de tester dans ce package sont `getStrengthDescription(Number score)` et `fulfillsMinimumRequirements(CharSequence password)`.
-Nous pensons qu'il était pertinent de tester ces fonctions car celles ci sont reliés directement à la cybersécurité de l'usager et a son interaction avec l'application. Plus précisement elles vérifient 
-la force du mot  de passe de l'usager et aussi s'il respecte la longueur minimale.
+Nous pensons qu'il était pertinent de tester ces fonctions car celles ci sont reliés directement à la cybersécurité de l'usager et a son interaction avec l'application. Plus précisement, le premiere fourni une description sur la force du mot de l'usager et la deuxième s'il respecte la longueur minimale.
 
 [testGetStrengthDescriptionTooShort()](www.todojouterref.ca)
 
