@@ -87,7 +87,7 @@ public class PasswordStrengthUtilTest {
 	// Teste si la méthode fulfillsMinimumRequirements retourne correctement true
 	// lorsque le mot de passe respecte la longueur minimale requise, et false sinon.
 	@Test
-	public void fullfillsMinimumrequirementsTest(){
+	public void testFullfillsMinimumrequirements(){
 
 		ResourceBundle fakeBundle = Mockito.mock(ResourceBundle.class);
 		Environment fakeEnvironment = Mockito.mock(Environment.class);

@@ -58,7 +58,7 @@ public class ReadMeGeneratorTest {
 	// Teste si la méthode createVaultAccessLocationReadmeRtf génère correctement un document RTF
 	// avec les localisations d'accès au vault en utilisant les valeurs du bundle de ressources.
 	@Test
-	public void createVaultAccessLocationReadmeRtfTest(){
+	public void testCreateVaultAccessLocationReadmeRtf(){
 		String HEADING = "\\fs40\\qc %s";
 		String EMPTY_PAR = "";
 		ResourceBundle fakeBundle = mock(ResourceBundle.class);
