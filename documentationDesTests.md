@@ -10,6 +10,8 @@ Nous avons choisi ce package car le `keychainManager` est une classe très impor
 
 Nous avons effectué un test unitaire simple pour vérifier que cette fonction supprime correctement une clé. Nous commençons par stocker une clé dans le `keychainManager`, puis nous la supprimons et effectuons une assertion pour confirmer qu'elle n'est plus présente.
 
+[testDeletePassphrase()]()
+
 ## org.cryptomator.common.settings
 
 Dans ce package, nous avons travaillé sur le fichier `VaultSettingsTest`, plus précisément sur la méthode `serialized()`. On a choisi cette méthode particulierement pour le bonus de `javafaker` car elle permet de simuler les attributs du `VaultSettings`.
@@ -17,7 +19,7 @@ La méthode `serialized()` permet de stocker les configurations du `Vault` sous 
 
 Pour faire notre test unitaire: nous avons créé un JSON fictif dans notre fonction `setUp()`, puis nous avons fait des assertions sur chacun des paramètres attendus.
 
-
+[testSerialized()]()
 
 ## org.cryptomator.ui.addvaultwizard
 
@@ -34,6 +36,9 @@ Dans ce package, nous avons réalisé deux tests pour couvrir trois méthodes du
 
 On a choisi ce package car nous avons remarqué qu'il y avait beacoup de méthodes non couverts. Puis, `VaultService.java` est une classe interessante qui s'occupe des services de verrouillage du vault.
 faire des tests sur ce package nous a permis de mieux comprendre le comportement du vault.
+
+[testCreateReveal()]()
+[testLockAndReveal()]()
 
 ## org.cryptomator.ui.changepassword
 
