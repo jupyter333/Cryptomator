@@ -42,7 +42,7 @@ faire des tests sur ce package nous a permis de mieux comprendre le comportement
 
 ## org.cryptomator.ui.changepassword
 
-Les méthodes qu'on a choisi de tester dans ce package sont `getStrengthDescription(Number score)` et `fulfillsMinimumRequirements(CharSequence password)`.
+Les méthodes qu'on a choisi de tester dans ce package sont `getStrengthDescription(Number score)` et `fulfillsMinimumRequirements(CharSequence password)` dans le fichier `PasswordStrengthUtil.java`.
 Nous pensons qu'il était pertinent de tester ces fonctions car celles ci sont reliés directement à la cybersécurité de l'usager et a son interaction avec l'application. Plus précisement, le premiere fourni une description sur la force du mot de l'usager et la deuxième s'il respecte la longueur minimale.
 
 [testGetStrengthDescriptionTooShort()](https://github.com/jupyter333/Cryptomator/blob/8be9e1d279152967adf9dbbf1fcf64e07eea1791/src/test/java/org/cryptomator/ui/changepassword/PasswordStrengthUtilTest.java#L37)
