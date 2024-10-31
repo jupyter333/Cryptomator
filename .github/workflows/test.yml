@@ -1,4 +1,4 @@
-name: Test with flags
+name: Test
 
 on:
   push:
