@@ -1,11 +1,12 @@
-name: Test
+name: Test with flags
 
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 env:
-  JAVA_DIST: 'zulu'
+  JAVA_DIST: 'temurin'
   JAVA_VERSION: 22
 
 defaults:
@@ -16,6 +17,15 @@ jobs:
   test:
     name: Compile and Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        jvm_flag:
+          # Different types of JVM flags
+          - "-XX:+UseSerialGC"            # Type GC
+          - "-Xmx512m"                    # Mémoire maximale
+          - "-XX:+AlwaysPreTouch"          # Ensures all memory is pre-touched to help optimize memory allocation and avoid page faults
+          - "-XX:+PrintCompilation"       # Log de compilation
+          - "-XX:+ShowCodeDetailsInExceptionMessages" # Afficher les détails dans les messages d'exception
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -24,13 +34,15 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'maven'
       - name: Build and Test
+        env:
+          JAVA_TOOL_OPTIONS: ${{ matrix.jvm_flag }}
         run: >
           xvfb-run
           mvn -B verify -Djavafx.platform=linux
           jacoco:report
           -Pcoverage
       - name: Get JaCoCo Coverage
-        id: coverage  
+        id: coverage
         run: |
           coverage=$(python3 config/coverage.py target/site/jacoco/jacoco.csv) 
           echo "COVERAGE=$coverage" >> $GITHUB_ENV
