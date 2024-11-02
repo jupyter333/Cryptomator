@@ -22,7 +22,7 @@ jobs:
         jvm_flag:
           # Different types of JVM flags
           - "-XX:+UseSerialGC"            # Type GC
-          - "-Xmx256m"                    # Mémoire maximale
+          - "-Xmx128m"                    # Mémoire maximale
           - "-XX:+AlwaysPreTouch"          # Ensures all memory is pre-touched to help optimize memory allocation and avoid page faults
           - "-XX:+PrintCompilation"       # Log de compilation
           - "-XX:+ShowCodeDetailsInExceptionMessages" # Afficher les détails dans les messages d'exception
