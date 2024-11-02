@@ -59,4 +59,4 @@ jobs:
           fi
 
       - name: Show ASCII Art
-        run: cat ascii_art.txt
+        run: cat humor.txt
