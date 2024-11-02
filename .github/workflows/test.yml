@@ -25,7 +25,7 @@ jobs:
           - "-Xmx512m"                    # Mémoire maximale
           - "-XX:TieredStopAtLevel=1"          # Ensures all memory is pre-touched to help optimize memory allocation and avoid page faults
           - "-XX:+PrintCompilation"       # Log de compilation
-          - "XX:+UnlockExperimentalVMOptions" # Afficher les détails dans les messages d'exception
+          - "-XX:+UnlockExperimentalVMOptions" # Afficher les détails dans les messages d'exception
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
