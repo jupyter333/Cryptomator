@@ -57,3 +57,6 @@ jobs:
           else
             echo "New coverage: $coverage%"
           fi
+
+      - name: Show ASCII Art
+        run: cat ascii_art.txt
