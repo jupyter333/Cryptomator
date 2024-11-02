@@ -47,12 +47,6 @@ Test*.
 Pour cette tâche. On a cherché de l'information sur internet par rapport aux [options de la JVM](https://bell-sw.com/blog/guide-to-jvm-memory-configuration-options/). 
 Pour la plupart de cas, on a essayé des possibles cas limites.
 
- **Type de flag :**
-
-
-
-`-Xmx512m` **Type de flag 
-
 | Flag              |       Type        | Description                                                                                                                                                                                                                                                                                                                      | Observations                                                                                                                          |
 |:------------------|:-----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------| 
 | `XX:+UseSerialGC` | Garbage collector | Ce flag active le Serial Garbage Collector, qui utilise un seul thread pour la collecte des ordures. Il est adapté aux petites applications, car il est simple et consomme peu de ressources, bien qu’il puisse ralentir les applications plus grandes lors du nettoyage. Nous l'avons choisi pour tester un possible cas limite | **Dans notre cas particulier ce type de garbage collector n'a pas affecté la compilation, et tout ce passe dans un temps acceptable** |
