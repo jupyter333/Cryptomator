@@ -9,9 +9,9 @@ Pour notre tâche 3 nous avons pris 5 *flags*.
           # Different types of JVM flags
           - "-XX:+UseSerialGC"            # Type GC
           - "-Xmx512m"                    # Mémoire maximale
-          - "-XX:+AlwaysPreTouch"         # Aide à retoucher la memoire pour optimiser son allocation de mémoire
-          - "-XX:+PrintCompilation"       # Log de compilation
-          - "-XX:+ShowCodeDetailsInExceptionMessages" # Afficher les détails dans les messages d'exception
+          - "-XX:TieredStopAtLevel=1"     # Type de compilation C1
+          - "-XX:+PrintCompilation"       # Journalisation de la compilation (logging)
+          - "-XX:+UnlockExperimentalVMOptions" # Optimisation expérimentale
 ```
 
 Chacune des *flags* s'exécutent sur l'action github `test`. Cette action donne des logs clairs
