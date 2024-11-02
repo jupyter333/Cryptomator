@@ -57,6 +57,6 @@ jobs:
           else
             echo "New coverage: $coverage%"
           fi
-
-      - name: Show ASCII Art
+      # Show ASCII Art
+      - name: 🥳 Compilation réussie 🥳
         run: cat humor.txt

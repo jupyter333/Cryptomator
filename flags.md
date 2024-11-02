@@ -23,11 +23,19 @@ Il était plus pratique de travailler sur github directement sans avoir à
 faire de *push* à chaque fois.
 
 ### Jobs
-Ajout du bloc `strategy` qui est un mot clé github pour configurer
+Ajout du bloc `strategy`  configurer
 des paramètres d'éxecution comme les flags,
-`Matrix` pour donner une suite d'arguments et `jmv_flag`
+`Matrix` pour donner une suite d'arguments, et `jmv_flag`
 pour nos choix de *flags*.
-Ces flags sont lues dans le `env` de l'étape *Build and
+Ces flags sont lues dans le `env` dans l'étape *Build and
 Test*.
+
+**Tenez compte que cette action est aussi automatique et s'exécute à chaque *push*,
+*pull request***. Cette action calcule le taux de couverture comme dans la tâche 2; 
+elle donne clairement chaque execution de flag comme il est montré dans l'image suivant.
+
+## Element d'humeur.
+On a mis un fichier contenant du ascii art, il s'agit d'un bonhomme de southpark, lorsque
+le workflow est reussi sans problème il s'affiche 
 
 ![image](/1.png)
