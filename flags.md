@@ -1,7 +1,9 @@
 # Tâche #3
 **Jhosim Agudelo et César Rodriguez**
 
-Pour ce notre tâche 3 nous avons pris 5 *flags* pour la compilation sur l'action github.
+## 5 flags 
+
+Pour notre tâche 3 nous avons pris 5 *flags*.
 
 ```bash
           # Different types of JVM flags
@@ -11,6 +13,13 @@ Pour ce notre tâche 3 nous avons pris 5 *flags* pour la compilation sur l'actio
           - "-XX:+PrintCompilation"       # Log de compilation
           - "-XX:+ShowCodeDetailsInExceptionMessages" # Afficher les détails dans les messages d'exception
 ```
+
+Chacune des *flags* s'exécutent sur l'action github `test`. Cette action donne des logs clairs
+sur elles.
+
+![image](/1.png)
+
+## Changements dans l'action github.
 
 Dans le fichier `test.yml` nous avons ajouté du code dans les blocs suivants :
 
@@ -30,12 +39,42 @@ pour nos choix de *flags*.
 Ces flags sont lues dans le `env` dans l'étape *Build and
 Test*.
 
-**Tenez compte que cette action est aussi automatique et s'exécute à chaque *push*,
-*pull request***. Cette action calcule le taux de couverture comme dans la tâche 2; 
-elle donne clairement chaque execution de flag comme il est montré dans l'image suivant.
+**Tenez compte que cette action est aussi automatique et s'exécute à chaque *push* et
+*pull request***. 
+
+## Pourquoi ces flags?
+
+Pour cette tâche. On a cherché de l'information sur internet par rapport aux [options de la JVM](https://bell-sw.com/blog/guide-to-jvm-memory-configuration-options/). 
+Pour la plupart de cas, on a essayé des possibles cas limites.
+
+ **Type de flag :**
+
+
+
+`-Xmx512m` **Type de flag 
+
+| Flag              |       Type        | Description                                                                                                                                                                                                                                                                                                                      | Observations                                                                                                                          |
+|:------------------|:-----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------| 
+| `XX:+UseSerialGC` | Garbage collector | Ce flag active le Serial Garbage Collector, qui utilise un seul thread pour la collecte des ordures. Il est adapté aux petites applications, car il est simple et consomme peu de ressources, bien qu’il puisse ralentir les applications plus grandes lors du nettoyage. Nous l'avons choisi pour tester un possible cas limite | **Dans notre cas particulier ce type de garbage collector n'a pas affecté la compilation, et tout ce passe dans un temps acceptable** |
+| `-Xmx512m`        |      Mémoire      | Définit la taille maximale du tas mémoire à 512 Mo (mémoire que le JVM peut utiliser pour stocker les objets). Ce paramètre empêche l'application d’utiliser plus de mémoire que ce qui est défini, ce qui est utile pour contrôler la consommation de mémoire et éviter les erreurs liées au manque de mémoire.                 |
+| Codecademy Tee    |       False       | 19.99                                                                                                                                                                                                                                                                                                                            |
+| Codecademy Hoodie |       False       | 42.99                                                                                                                                                                                                                                                                                                                            |
+
+
+
+
+
+
+
+
+
+
+
 
 ## Element d'humeur.
-On a mis un fichier contenant du ascii art, il s'agit d'un bonhomme de southpark, lorsque
-le workflow est reussi sans problème il s'affiche 
 
-![image](/1.png)
+Lorsque la compilation est réussi, il y a un ascii art qui s'affiche, cet ascii se trouve dans le fichier
+`humor.txt`
+
+![image](/2.png)
+
