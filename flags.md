@@ -33,7 +33,7 @@ faire de *push* à chaque fois.
 
 ### Jobs
 Ajout du bloc `strategy`  configurer
-des paramètres d'éxecution comme les flags,
+des paramètres d'exécution comme les flags,
 `Matrix` pour donner une suite d'arguments, et `jmv_flag`
 pour nos choix de *flags*.
 Ces flags sont lues dans le `env` dans l'étape *Build and
@@ -44,26 +44,17 @@ Test*.
 
 ## Pourquoi ces flags?
 
-Pour cette tâche. On a cherché de l'information sur internet par rapport aux [options de la JVM](https://bell-sw.com/blog/guide-to-jvm-memory-configuration-options/). 
+Pour cette tâche. On a lu les ressources données dans le README pour cette tâche,
+mais aussi, on a cherché de l'information sur internet par rapport aux [options de la JVM](https://bell-sw.com/blog/guide-to-jvm-memory-configuration-options/). 
+
 Pour la plupart de cas, on a essayé des possibles cas limites.
 
-| Flag              |       Type        | Description                                                                                                                                                                                                                                                                                                                      | Observations                                                                                                                          |
-|:------------------|:-----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------| 
-| `XX:+UseSerialGC` | Garbage collector | Ce flag active le Serial Garbage Collector, qui utilise un seul thread pour la collecte des ordures. Il est adapté aux petites applications, car il est simple et consomme peu de ressources, bien qu’il puisse ralentir les applications plus grandes lors du nettoyage. Nous l'avons choisi pour tester un possible cas limite | **Dans notre cas particulier ce type de garbage collector n'a pas affecté la compilation, et tout ce passe dans un temps acceptable** |
-| `-Xmx512m`        |      Mémoire      | Définit la taille maximale du tas mémoire à 512 Mo (mémoire que le JVM peut utiliser pour stocker les objets). Ce paramètre empêche l'application d’utiliser plus de mémoire que ce qui est défini, ce qui est utile pour contrôler la consommation de mémoire et éviter les erreurs liées au manque de mémoire.                 |
-| Codecademy Tee    |       False       | 19.99                                                                                                                                                                                                                                                                                                                            |
-| Codecademy Hoodie |       False       | 42.99                                                                                                                                                                                                                                                                                                                            |
-
-
-
-
-
-
-
-
-
-
-
+| Flag              |       Type        | Description                                                                                                                                                                                                                                                                                                                      | Observations                                                                                                                                                                                                                        |
+|:------------------|:-----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| `XX:+UseSerialGC` | Garbage collector | Ce flag active le Serial Garbage Collector, qui utilise un seul thread pour la collecte des ordures. Il est adapté aux petites applications, car il est simple et consomme peu de ressources, bien qu’il puisse ralentir les applications plus grandes lors du nettoyage. Nous l'avons choisi pour tester un possible cas limite | Dans notre cas particulier ce type de garbage collector n'a pas affecté la compilation, et tout ce passe dans un temps acceptable                                                                                                   |
+| `-Xmx512m`        |      Mémoire      | Définit la taille maximale du tas mémoire à 512 Mo (mémoire que le JVM peut utiliser pour stocker les objets). Ce paramètre empêche l'application d’utiliser plus de mémoire que ce qui est défini, ce qui est utile pour contrôler la consommation de mémoire et éviter les erreurs liées au manque de mémoire.                 | Nous avons remaqué que la taille maximale de mémoire allouée a eu peu d'impacte sur notre github action, On a testé avec les tailles 64, 128, 256 et 512 donnant comme résultat des changement d'ordre d'à peine quelques secondes. |
+| Codecademy Tee    |       False       | 19.99                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                     |
+| Codecademy Hoodie |       False       | 42.99                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                     |
 
 ## Element d'humeur.
 
