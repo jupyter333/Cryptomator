@@ -36,11 +36,8 @@ jobs:
       - name: Build and Test avec flag ${{ matrix.jvm_flag }}
         env:
           JAVA_TOOL_OPTIONS: ${{ matrix.jvm_flag }}
-        run: >
-          xvfb-run
-          mvn -B verify -Djavafx.platform=linux
-          jacoco:report
-          -Pcoverage
+        run: |
+          xvfb-run mvn -B verify -Djavafx.platform=linux jacoco:report -Pcoverage
       - name: Get JaCoCo Coverage
         id: coverage
         run: |
