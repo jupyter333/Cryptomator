@@ -33,7 +33,7 @@ jobs:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'maven'
-      - name: Build and Test
+      - name: Build and Test avec flag ${{ matrix.jvm_flag }}
         env:
           JAVA_TOOL_OPTIONS: ${{ matrix.jvm_flag }}
         run: >
