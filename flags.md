@@ -16,7 +16,7 @@ Pour notre tâche 3 nous avons pris 5 *flags*.
 
 Chacune des *flags* s'exécutent sur l'action github `test`. En donnant clairement laquelle s'exécute.
 
-![image](/1.png)
+![image](/image3.png)
 
 ## Changements dans l'action github.
 
@@ -29,13 +29,17 @@ qui permet d'exécuter manuellement ce workflow. On a fait ce choix, car
 cette action s'exécutait seulement sur **push** ou **pull request**.
 Il était un choix nécessaire pour vérifier notre workflow sans toucher au code.
 
-### Jobs
+### Jobs:
 Ajout du bloc `strategy` pour permettre de configurer
 les paramètres d'exécution sur le JVM,
 `Matrix` pour donner une suite d'arguments, et `jmv_flag`
 pour nos choix de *flags*.
 Ces flags sont lues dans le `env` dans l'étape *Build and
 Test*.
+
+### Build and test:
+Ajout de env: JAVA_TOOL_OPTIONS: ${{ matrix.jvm_flag }}, cela 
+permet de fournir dynamiquement les flags dans la matrix que l'on veut executer.
 
 
 ## Pourquoi ces flags?
@@ -53,7 +57,7 @@ Pour la plupart de cas, on a essayé des possibles cas limites.
 | `XX:+PrintCompilation`            |           Logging            | Ce flag donne des logs sur la compilation: <br> - Horodatage en milliseconds <br> - Numero de séquence <br> - Niveau d'optimisation (1,2,3.. ou n aucun) <br> - Type de la méthode compilée.                                                                                                                     | Puisque ce projet est assez large les logs le sont aussi, le logging donne des détails avancés sur la compilation. Nous remarquons que les types de compilation peuvent varier. La compilation s'exécute sans problèmes. <br> Ce flag aide a voir un exemple de journalisation sur notre workflow |
 | `XX:+UnlockExperimentalVMOptions` | Optimisations Expérimentales | Ce flag permet l'utilisation des options en phase de tests pour la version courant de Java                                                                                                                                                                                                                       | On voit que la compilation se réalise sans aucun problème. On a choisi ce type de *flag* pour voir si le programme fonctionnait bien avec des optimisation expérimentales                                                                                                                         | 
 
-## Element d'humeur.
+## Element d'humour.
 
 Lorsque la compilation est réussi, il y a un ascii art qui s'affiche, cet ascii se trouve dans le fichier
 `humor.txt`
