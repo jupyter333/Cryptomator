@@ -1,5 +1,3 @@
-Here is one solution that doesn't require any additional marketplace installations (originally found here). Simply create a new GitHub workflow (e.g. .github/workflows/dependabotautomerge.yml) containing:
-
 name: "Dependabot Automerge - Action"
 
 on:
